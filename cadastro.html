@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:  rgb(0, 0, 0);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+
+    .cadastro-container {
+      background-color: rgba(187, 4, 224, 0.308);
+      padding: 20px;
+      border-radius: 40px;
+      box-shadow: 0 0 1000px rgb(255, 0, 0);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #FF49F5;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    h2{
+        color:#FF49F5;
+    }
+
+    
+
+    button {
+      background-color: #FA9750;
+      color:black;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff0505d1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="cadastro-container">
+  <h2>Cadastro</h2>
+  <form id="processar_cadastro" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="username" required>
+    
+    <label for="sobrenome">Sobrenome:</label>
+    <input type="text" id="sobrenome" name="username" required>
+    
+    <label for="user">Nome de Usuário:</label>
+    <input type="text" id="user" name="username" required>
+
+    <label for="username">Email:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="username">Confirmar Email:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required>
+   
+    <label for="password">Confirmar senha:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Terminar Cadastro</button>
+    <script type="module"> 
+        
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
+        const firebaseConfig = {
+          apiKey: "AIzaSyAHqYTP9oWynlJLj80EVSfKwarPGUUCtIk",
+          authDomain: "primeiro-projeto-b768c.firebaseapp.com",
+          projectId: "primeiro-projeto-b768c",
+          storageBucket: "primeiro-projeto-b768c.appspot.com",
+          messagingSenderId: "938419930408",
+          appId: "1:938419930408:web:a6cda6ac543f21f1aa3c1d"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        
+        const auth = getAuth(app);
+        
+        document.getElementById ('processar_cadastro').addEventListener('submit', function(event){
+        
+        event.preventDefault();
+        
+        const Email = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        createUserWithEmailAndPassword(auth, Email, password)
+          .then((userCredential) => {
+            // Signed in 
+            console.log("Cadastro bem-sucedido:", userCredential);
+            window.location.href = 'asa.html';
+            // ...
+          })
+          .catch((error) => {
+           console.log("Erro no cadastro:", error);
+           alert("Erro no cadastro: " + error.message);
+            // ..
+          });
+        })
+        
+        
+        </script>
+        
+        </body>
+        </html>
+
+        
+        
