@@ -99,3 +99,9 @@ header {
     list-style: none;
     
    }
+
+   .email{
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+   }

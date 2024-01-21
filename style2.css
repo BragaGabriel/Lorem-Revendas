@@ -77,3 +77,9 @@ color:#FF49F5 ;
 font-family: fantasy;
 text-decoration: none;
 }
+
+.email{
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+   }
